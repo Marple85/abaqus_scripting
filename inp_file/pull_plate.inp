@@ -8,7 +8,7 @@
 *Elastic
 210000., 0.3
 *Plastic
-  500.,0.
+  $sig_yield$,0.
 **
 ** Name: x_sym Type: Displacement/Rotation
 *Boundary
