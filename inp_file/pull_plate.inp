@@ -1,0 +1,36 @@
+*Heading
+** plate with hole model, SI units
+*Preprint, echo=NO, model=NO, history=NO, contact=NO
+**
+*INCLUDE, input=plate_geometry.inp
+**
+*Material, name=steel
+*Elastic
+210000., 0.3
+*Plastic
+  500.,0.
+**
+** Name: x_sym Type: Displacement/Rotation
+*Boundary
+plate-1.x_sym, 1, 1
+** Name: y_sym Type: Displacement/Rotation
+*Boundary
+plate-1.y_sym, 2, 2
+** ----------------------------------------------------------------
+*Step, name=pull_y, nlgeom=YES
+*Static
+1., 0.1, 1e-05, 1.
+**
+*Boundary
+plate-1.RP, 1, 1
+plate-1.RP, 2, 2, 1.
+plate-1.RP, 6, 6
+**
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+** print node and element results into dat-file
+*NODE PRINT
+U, RF,
+*EL PRINT
+S, COORD, PEEQ,
+*End Step
