@@ -6,19 +6,16 @@ from subprocess import call
 with open('pull_plate.inp','r') as f:
     lines = f.read().split('\n')
 
-def make_inp_file(lines,str_line,val_line):
+def make_inp_file(lines,string,value):
     # copy the original lines
     lines_temp = lines[:]
     # where is the yield stress line?
     for i_line in range(len(lines_temp)):
         line = lines_temp[i_line]
-        if '$'+str_line+'$' in line:
-            print(line)
-            print('found!')
-            lines_temp[i_line] = line.replace('$'+str_line+'$',str(val_line))
-    print(lines_temp)
+        if '$'+string+'$' in line:
+            lines_temp[i_line] = line.replace('$'+string+'$',str(value))
     # export to new inp file
-    inp_name = 'pull_plate_'+str_line+'_'+str(int(val_line))
+    inp_name = 'pull_plate_'+string+'_'+str(int(value))
     with open(inp_name+'.inp','w') as f:
         f.write('\n'.join(lines_temp))
     # run the inp file (subprocess.call)
