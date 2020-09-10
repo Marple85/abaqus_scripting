@@ -16,7 +16,7 @@ plate-1.x_sym, 1, 1
 ** Name: y_sym Type: Displacement/Rotation
 *Boundary
 plate-1.y_sym, 2, 2
-** ----------------------------------------------------------------
+** ------------------------------------------------------------
 *Step, name=pull_y, nlgeom=YES
 *Static
 1., 0.1, 1e-05, 1.
