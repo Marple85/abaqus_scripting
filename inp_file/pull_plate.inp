@@ -19,11 +19,11 @@ plate-1.y_sym, 2, 2
 ** ------------------------------------------------------------
 *Step, name=pull_y, nlgeom=YES
 *Static
-1., 0.1, 1e-05, 1.
+1., 1., 1e-05, 1.
 **
 *Boundary
 plate-1.RP, 1, 1
-plate-1.RP, 2, 2, 1.
+plate-1.RP, 2, 2, 0.08
 plate-1.RP, 6, 6
 **
 *Output, field, variable=PRESELECT
