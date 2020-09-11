@@ -46,7 +46,6 @@ def make_inp_file(lines,string,value):
 
 # create list of sy values
 sy_list = [500., 750., 1000., 1250., 1500.]
-
 result_dict = {}
 
 # run the inp-files for each sy value
