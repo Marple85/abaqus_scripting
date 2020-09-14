@@ -22,23 +22,23 @@ def evaluate_rf2(dat_file):
     # take the second from last string (RF2) and convert it to a float
     return float(res_line[-2])
     
-def make_inp_file(lines,string,value):
-    # copy the original lines
-    lines_temp = lines[:]
-    # where is the yield stress line?
-    for i_line in range(len(lines_temp)):
-        line = lines_temp[i_line]
-        if '$'+string+'$' in line:
-            lines_temp[i_line] = line.replace('$'+string+'$',str(value))
-    # export to new inp file
-    inp_name = 'pull_plate_'+string+'_'+str(int(value))
-    with open(inp_name+'.inp','w') as f:
-        f.write('\n'.join(lines_temp))
+def make_inp_file(sig_yield):
+    # use the yield stress in the job name
+    job_name = 'plate-s_yield-'+str(sig_yield)
+    # create the string for the parameters.inp file
+    # '\n' denotes a line break
+    par_string = '*Parameter\nsig_yield={}'.format(sig_yield)
+    # write to the parameters.inp file
+    with open('parameters.inp','w') as f:
+        f.write(par_string)
+    # write to the ..._par.inp file
+    with open(job_name+'_par.inp','w') as f:
+        f.write(par_string)
     # run the inp file (subprocess.call)
-    call('abaqus interactive job='+inp_name, shell=True)
+    call('abaqus interactive input=pull_plate job='+job_name, shell=True)
     # read from the dat-file
-    rf2 = evaluate_rf2(inp_name)
-    print('Model with {} = {} MPa: rf2 = {} N'.format(string,value,rf2))
+    rf2 = evaluate_rf2(job_name)
+    print('Model with sig_yield = {} MPa: rf2 = {} N'.format(sig_yield,rf2))
     return rf2
 
 # call the function once
@@ -50,6 +50,6 @@ result_dict = {}
 
 # run the inp-files for each sy value
 for sy in sy_list:
-    result_dict[sy] = make_inp_file(lines,'sig_yield',sy)
+    result_dict[sy] = make_inp_file(sy)
 
 print(result_dict)
