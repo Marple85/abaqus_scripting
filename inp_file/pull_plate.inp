@@ -2,13 +2,14 @@
 ** plate with hole model, SI units
 *Preprint, echo=NO, model=NO, history=NO, contact=NO
 **
+*INCLUDE, input=parameters.inp
 *INCLUDE, input=plate_geometry.inp
 **
 *Material, name=steel
 *Elastic
 210000., 0.3
 *Plastic
-  $sig_yield$,0.
+  <sig_yield>,0.
 **
 ** Name: x_sym Type: Displacement/Rotation
 *Boundary
