@@ -229,6 +229,14 @@ plate-1.RP, 1, 1
 plate-1.RP, 2, 2, 0.08
 plate-1.RP, 6, 6
 **
+**
+*Output, field
+*Node Output
+COORD, 
+**
+*Element Output
+COORD,
+**
 *Output, field, variable=PRESELECT
 **
 *Output, history
