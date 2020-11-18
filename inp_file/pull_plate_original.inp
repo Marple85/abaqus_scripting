@@ -230,6 +230,11 @@ plate-1.RP, 2, 2, 0.08
 plate-1.RP, 6, 6
 **
 *Output, field, variable=PRESELECT
+**
+*Output, history
+*Node Output, nset=PLATE-1.RP
+RF2, U2
+**
 *Output, history, variable=PRESELECT
 ** print node and element results into dat-file
 *NODE PRINT
