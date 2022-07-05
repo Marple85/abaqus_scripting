@@ -31,7 +31,7 @@ s.Line(point1=(0,radius), point2=(0,h/2.))
 
 # create the part
 p = m.Part(name='plate', dimensionality=TWO_D_PLANAR, type=DEFORMABLE_BODY)
-p.BaseShell(sketch=s)
+p.BaseShell(sketch=s) 
 
 # create sets for the part
 # ...
